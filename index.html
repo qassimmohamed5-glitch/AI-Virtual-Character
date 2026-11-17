@@ -21,7 +21,7 @@
       <section class="panel" aria-labelledby="avatar-title">
         <header class="panel-header">
           <h2 id="avatar-title">الشخصية الافتراضية</h2>
-          <span class="tag">معاينة الصورة</span>
+          <button id="avatar-view-button" type="button" class="secondary" aria-controls="avatar-stage did-view">عرض D‑ID</button>
         </header>
         <div class="stage" id="avatar-stage">
           <div class="portrait">
@@ -29,6 +29,8 @@
             <img id="avatar" alt="صورة الشخصية الافتراضية" hidden>
           </div>
         </div>
+        <div id="did-view" hidden></div>
+        <p id="did-status" role="status" hidden></p>
         <div class="upload">
           <input id="image-input" type="file" accept="image/*" hidden>
           <button id="upload-button" type="button" class="primary"><span aria-hidden="true">↑</span> رفع صورة</button>

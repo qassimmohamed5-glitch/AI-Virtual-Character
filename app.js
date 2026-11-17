@@ -92,6 +92,9 @@ const speakButton = document.querySelector('#speak-button');
 const stopSpeechButton = document.querySelector('#stop-speech-button');
 const speechStatus = document.querySelector('#speech-status');
 const avatarStage = document.querySelector('#avatar-stage');
+const avatarViewButton = document.querySelector('#avatar-view-button');
+const didView = document.querySelector('#did-view');
+const didStatus = document.querySelector('#did-status');
 const motionButton = document.querySelector('#motion-button');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const synthesis = window.speechSynthesis;
@@ -99,6 +102,31 @@ const Utterance = window.SpeechSynthesisUtterance;
 const speechHint = speechStatus.textContent;
 const noArabicVoice = 'لا يوجد صوت عربي متاح في المتصفح. تحقّق من أصوات النطق في إعدادات جهازك ثم حاول مجددًا.';
 let activeSpeech = null;
+
+avatarViewButton.addEventListener('click', () => {
+  if (window.location.protocol === 'file:') {
+    didStatus.hidden = false;
+    didStatus.textContent = 'يتطلب D‑ID فتح الموقع من نطاق مسموح به، مثل رابط GitHub Pages بعد إضافته في إعدادات D‑ID.';
+    return;
+  }
+
+  if (!didView.hidden) {
+    didView.replaceChildren();
+    didView.hidden = true;
+    avatarStage.hidden = false;
+    avatarViewButton.textContent = 'عرض D‑ID';
+    return;
+  }
+
+  const frame = document.createElement('iframe');
+  frame.title = 'الشخصية المتحركة من D‑ID';
+  frame.allow = 'microphone; autoplay; fullscreen';
+  frame.src = './did-frame.html';
+  didView.append(frame);
+  avatarStage.hidden = true;
+  didView.hidden = false;
+  avatarViewButton.textContent = 'عرض الصورة الثابتة';
+});
 
 function setMotion(enabled) {
   avatarStage.dataset.motion = enabled ? 'on' : 'off';

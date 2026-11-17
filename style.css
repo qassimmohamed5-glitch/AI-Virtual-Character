@@ -34,7 +34,7 @@ body {
   background: #183b43;
   color: var(--accent);
 }
-.mode, .tag {
+.mode {
   border: 1px solid var(--line);
   border-radius: 2rem;
   padding: .3rem .7rem;
@@ -70,6 +70,26 @@ h2 { font-size: 1.1rem; margin: 0; }
     radial-gradient(ellipse at center, #315071c7, transparent 66%),
     repeating-linear-gradient(0deg, transparent 0 25px, #8ab0ee13 25px 26px),
     repeating-linear-gradient(90deg, #151e35 0 25px, #293754 25px 26px);
+}
+#did-view {
+  border: 1px solid var(--line);
+  border-radius: .95rem;
+  overflow: hidden;
+}
+#did-view iframe {
+  display: block;
+  width: 100%;
+  height: clamp(440px, 65vh, 620px);
+  border: 0;
+  background: #0e1527;
+}
+.did-frame-page {
+  height: 100vh;
+  background: #0e1527;
+}
+#did-agent-container {
+  width: 100%;
+  height: 100%;
 }
 .portrait {
   position: relative;
@@ -138,7 +158,7 @@ button:disabled { opacity: .62; cursor: default; }
 }
 .empty { margin: auto; text-align: center; }
 .empty span { margin: 0 auto .7rem; }
-.empty p, #image-status, #voice-status, #speech-status { font-size: .85rem; margin: .55rem 0 0; }
+.empty p, #image-status, #voice-status, #speech-status, #did-status { font-size: .85rem; margin: .55rem 0 0; }
 .message {
   align-self: flex-start;
   max-width: 90%;
