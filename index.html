@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Virtual Character</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">✦</span><b dir="ltr">AI Virtual Character</b></div>
+    <span class="mode">وضع المعاينة</span>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>استوديو الشخصية الافتراضية</h1>
+      <p>أضف صورة لشخصيتك وجرّب واجهة المحادثة.</p>
+    </div>
+    <div class="workspace">
+      <section class="panel" aria-labelledby="avatar-title">
+        <header class="panel-header">
+          <h2 id="avatar-title">الشخصية الافتراضية</h2>
+          <span class="tag">معاينة الصورة</span>
+        </header>
+        <div class="stage" id="avatar-stage">
+          <div class="portrait">
+            <div class="placeholder" id="placeholder" aria-hidden="true"><i></i></div>
+            <img id="avatar" alt="صورة الشخصية الافتراضية" hidden>
+          </div>
+        </div>
+        <div class="upload">
+          <input id="image-input" type="file" accept="image/*" hidden>
+          <button id="upload-button" type="button" class="primary"><span aria-hidden="true">↑</span> رفع صورة</button>
+          <button id="remove-button" type="button" class="secondary" hidden>إزالة الصورة</button>
+          <p id="image-status" role="status">اختر صورة من جهازك.</p>
+        </div>
+        <div class="speech-controls">
+          <button id="speak-button" type="button" class="primary" aria-describedby="speech-status">تحدث</button>
+          <button id="stop-speech-button" type="button" class="secondary" disabled>إيقاف الكلام</button>
+          <button id="motion-button" type="button" class="secondary" aria-pressed="false">الحركات</button>
+          <p id="speech-status" role="status">اكتب رسالة ثم اضغط «تحدث» لسماعها.</p>
+        </div>
+      </section>
+      <section class="panel chat" aria-labelledby="chat-title">
+        <header class="panel-header">
+          <h2 id="chat-title">المحادثة</h2>
+          <button id="clear-button" class="secondary" type="button" disabled>مسح الرسائل</button>
+        </header>
+        <div id="messages" class="messages" role="log" aria-label="سجل المحادثة" tabindex="0">
+          <div id="empty-chat" class="empty">
+            <span aria-hidden="true">✦</span>
+            <strong>ابدأ برسالة</strong>
+            <p>تظهر رسائلك هنا. الردود الذكية غير متصلة بعد.</p>
+          </div>
+        </div>
+        <form id="chat-form">
+          <div class="composer">
+            <button id="mic-button" class="secondary mic" type="button" aria-describedby="voice-status">مايك</button>
+            <input id="message-input" dir="auto" aria-label="رسالتك" placeholder="اكتب رسالتك هنا…" maxlength="2000" required>
+            <button class="primary" type="submit">إرسال</button>
+          </div>
+          <p id="voice-status" role="status">المحادثة الصوتية بانتظار ربط خدمة الصوت.</p>
+        </form>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
